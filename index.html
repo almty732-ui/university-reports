@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تقارير جامعية - بالذكاء الاصطناعي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">📚 تقارير جامعية</div>
+  <div id="authSection" class="auth-section">
+    <button id="loginBtn" class="auth-btn">🔐 تسجيل دخول</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>✨ اطلب تقرير جامعي بالذكاء الاصطناعي</h1>
+  <p>عبّي المعلومات، والذكاء الاصطناعي راح يكتبلك 3 تقارير كاملة جاهزة للطباعة</p>
+
+  <form id="aiForm" class="ai-form">
+
+    <h3 class="form-section-title">🎓 معلومات الجامعة</h3>
+
+    <div class="ai-options">
+      <select id="aiUniversity" required>
+        <option value="">جاري تحميل الجامعات...</option>
+      </select>
+      <input type="text" id="aiCollege" placeholder="اسم الكلية (مثال: كلية الهندسة)" required>
+    </div>
+
+    <div class="ai-options">
+      <input type="text" id="aiDept" placeholder="القسم (مثال: قسم الحاسوب)" required>
+      <input type="text" id="aiYear" placeholder="السنة الدراسية" value="2024-2025" required>
+    </div>
+
+    <h3 class="form-section-title">👤 معلومات الطالب</h3>
+
+    <input type="text" id="aiStudent" placeholder="اسم الطالب الكامل" required autocomplete="off">
+    <input type="text" id="aiDoctor" placeholder="اسم الدكتور المشرف (اختياري)">
+
+    <h3 class="form-section-title">📝 موضوع التقرير</h3>
+
+    <input type="text" id="aiTopic" placeholder="اكتب موضوع التقرير... مثال: التلوث البيئي" required autocomplete="off">
+
+    <button type="submit" id="aiBtn">🪄 اكتبلي التقارير</button>
+  </form>
+
+  <div id="aiLoading" class="ai-loading hidden">
+    <div class="spinner"></div>
+    <p>⏳ جاري كتابة 3 تقارير... (1-2 دقيقة)</p>
+  </div>
+
+  <div id="aiError" class="ai-error hidden"></div>
+
+  <div id="aiResult" class="ai-result hidden">
+    <div class="ai-result-header">
+      <h3 id="aiTitle">التقارير الجاهزة</h3>
+      <div class="ai-result-actions">
+        <button id="aiCopy" type="button">📋 نسخ</button>
+        <button id="aiPdf" type="button">📥 تحميل PDF</button>
+        <button id="aiPrint" type="button">🖨 طباعة</button>
+      </div>
+    </div>
+    <div id="aiContent" class="ai-content"></div>
+  </div>
+</section>
+
+<div id="print-area"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script type="module" src="auth.js"></script>
+<script src="universities.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
